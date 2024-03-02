@@ -50,5 +50,10 @@ public class SnakeMove : MonoBehaviour
         direction=Vector2.zero;
         Debug.Log("hit");
     }
+
+    if (CompareTag("Food")){
+      direction=Vector2.zero;
+        Debug.Log("hit");
+    }
 }
 }
