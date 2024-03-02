@@ -9,6 +9,7 @@ public class SnakeMove : MonoBehaviour
     bool goingDown;
     bool goingLeft;
     bool goingRight;
+    public Transform bodyPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,15 +46,30 @@ public class SnakeMove : MonoBehaviour
         Mathf.Round(transform.position.y) + direction.y);
        }
 
-       void onCollisoin2D(Collision2D collision) {
-      if (CompareTag("Wall")){
-        direction=Vector2.zero;
-        Debug.Log("hit");
-    }
+void Grow() {
+    Instantiate(bodyPrefab);
+}
 
-    if (CompareTag("Food")){
-      direction=Vector2.zero;
-        Debug.Log("hit");
-    }
+  // void OnCollisoin2D(Collision2D collision) {
+  //    if (CompareTag("Wall"))
+    //  {
+   //     direction=Vector2.zero;
+      //  Debug.Log("hit");
+ //   }
+
+
+ //   if (CompareTag("Food"))
+ //   {
+ //     direction=Vector2.zero;
+   //     Debug.Log("hit");
+   // }
+  // }
+
+void OnTriggerEnter2D (Collider2D other) {
+if (other.tag == "Food")
+{
+    Debug.Log("hit");
+    Grow();
+} 
 }
 }
