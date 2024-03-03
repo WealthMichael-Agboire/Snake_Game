@@ -21,22 +21,22 @@ public class SnakeMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             direction=Vector2.up;
         }
        
-       else if (Input.GetKeyDown(KeyCode.A))
+       else if (Input.GetKeyDown(KeyCode.LeftArrow))
        {
         direction=Vector2.left;
        }
 
-       else if (Input.GetKeyDown(KeyCode.D))
+       else if (Input.GetKeyDown(KeyCode.RightArrow))
        {
         direction=Vector2.right;
        }
 
-       else if (Input.GetKeyDown(KeyCode.S))
+       else if (Input.GetKeyDown(KeyCode.DownArrow))
        {
         direction=Vector2.down;
        }
