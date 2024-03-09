@@ -21,51 +21,45 @@ public class SnakeMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.UpArrow))
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow) && goingDown != true)
         {
          
             direction=Vector2.up;
+            goingUp = true;
+            goingLeft = false;
+            goingRight = false;
+            goingDown=false;
         }
        
-       else if (Input.GetKeyDown(KeyCode.LeftArrow))
+       else if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow) && goingRight != true)
        {
         direction=Vector2.left;
+        goingLeft=true;
+        goingRight=false;
+        goingDown=false;
+        goingUp=false;
        }
 
-       else if (Input.GetKeyDown(KeyCode.RightArrow))
+       else if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow) && goingLeft != true)
        {
        
         direction=Vector2.right;
+        goingRight=true;
+        goingLeft=false;
+        goingDown=false;
+        goingUp=false;
        }
 
-       else if (Input.GetKeyDown(KeyCode.DownArrow))
+       else if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow) && goingUp != true)
        {
          
         direction=Vector2.down;
+        goingDown = true;
+        goingUp=false;
+        goingLeft = false;
+        goingRight=false;
        }
 
-
-
-
-      if (direction==Vector2.up) 
-      {
-        direction!=Vector2.down;
-      }
-
-      else if (direction==Vector2.down)
-      {
-        direction!=Vector2.up;
-      }
-
-      else if (direction==Vector2.left)
-      {
-        direction!=Vector2.right;
-      }
-
-      else if (direction==Vector2.right)
-      {
-        direction!=Vector2.left;
-      }
       }
 
        void FixedUpdate()
@@ -107,6 +101,9 @@ if (other.tag == "Food")
 {
     Debug.Log("hit");
     Grow();
+
+   Time.fixedDeltaTime -= 0.001f;
+
 } 
 
 else if (other.tag == "Obstacle") 
