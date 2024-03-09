@@ -23,6 +23,7 @@ public class SnakeMove : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
+         
             direction=Vector2.up;
         }
        
@@ -33,14 +34,39 @@ public class SnakeMove : MonoBehaviour
 
        else if (Input.GetKeyDown(KeyCode.RightArrow))
        {
+       
         direction=Vector2.right;
        }
 
        else if (Input.GetKeyDown(KeyCode.DownArrow))
        {
+         
         direction=Vector2.down;
        }
-    }
+
+
+
+
+      if (direction==Vector2.up) 
+      {
+        direction!=Vector2.down;
+      }
+
+      else if (direction==Vector2.down)
+      {
+        direction!=Vector2.up;
+      }
+
+      else if (direction==Vector2.left)
+      {
+        direction!=Vector2.right;
+      }
+
+      else if (direction==Vector2.right)
+      {
+        direction!=Vector2.left;
+      }
+      }
 
        void FixedUpdate()
        {
