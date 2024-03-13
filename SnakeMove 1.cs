@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SnakeMove : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class SnakeMove : MonoBehaviour
     bool goingRight;
    List<Transform> segments;
     public Transform bodyPrefab;
+    public int Snakescore;
+    public Text scoretext;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,7 +62,7 @@ public class SnakeMove : MonoBehaviour
         goingLeft = false;
         goingRight=false;
        }
-
+      
       }
 
        void FixedUpdate()
@@ -72,6 +75,9 @@ public class SnakeMove : MonoBehaviour
         transform.position = new Vector2 
         (Mathf.Round(transform.position.x) + direction.x,
         Mathf.Round(transform.position.y) + direction.y);
+       
+        scoretext.text = Snakescore.ToString();
+       
        }
 
 void Grow()
@@ -101,14 +107,17 @@ if (other.tag == "Food")
 {
     Debug.Log("hit");
     Grow();
+  Snakescore++;
 
    Time.fixedDeltaTime -= 0.001f;
 
 } 
 
+
 else if (other.tag == "Obstacle") 
 {
     SceneManager.LoadScene("Endscene");
 }
+
 }
 }
